@@ -93,17 +93,14 @@ namespace SEAnalogWheels
             }
         }
 
-
-        // Wrappers for private fields and methods
-        private static object[] dummyObject = new object[0];
         private static HkRigidBody SafeBody(this MyMotorSuspension _this)
         {
-            return (HkRigidBody)_SafeBody.Invoke(_this, dummyObject);
+            return (HkRigidBody)_SafeBody.Invoke(_this, null);
         }
 
         private static void PropagateFriction(this MyMotorSuspension _this)
         {
-            _PropagateFriction.Invoke(_this, dummyObject);
+            _PropagateFriction.Invoke(_this, null);
         }
 
         private static HkConstraint m_constraint(this MyMotorSuspension _this)

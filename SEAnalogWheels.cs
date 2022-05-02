@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Sandbox;
 using Sandbox.Game.Entities.Cube;
 using Sandbox.Game.GameSystems;
 using VRageMath;
+using VRage.Utils;
 using VRage.Plugins;
 using HarmonyLib;
 
@@ -13,6 +15,8 @@ namespace SEAnalogWheels
         {
             var harmony = new Harmony("SEAnalogWheels");
             harmony.PatchAll();
+
+            MyLogExtensions.Error(MySandboxGame.Log, "SEAnalogWheels initialized successfully");
         }
 
         public void Update()
@@ -47,7 +51,7 @@ namespace SEAnalogWheels
     public static class TryEnableBrakesPatch
     {
         // Remove default spacebar behavior (or whatever you've bound it to)
-        public static bool Prefix(bool __result)
+        public static bool Prefix(ref bool __result)
         {
             __result = true;
             return false;
