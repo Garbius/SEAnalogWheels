@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEAnalogWheels", "SEAnalogWheels.csproj", "{279555D1-A4E3-47A3-834E-2C6338BD2C50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{279555D1-A4E3-47A3-834E-2C6338BD2C50}.Debug|x64.ActiveCfg = Debug|x64
+		{279555D1-A4E3-47A3-834E-2C6338BD2C50}.Debug|x64.Build.0 = Debug|x64
+		{279555D1-A4E3-47A3-834E-2C6338BD2C50}.Release|x64.ActiveCfg = Release|x64
+		{279555D1-A4E3-47A3-834E-2C6338BD2C50}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B22CBE2-1AFF-4BB8-8416-8525DFD5DE1A}
+	EndGlobalSection
+EndGlobal
