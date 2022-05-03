@@ -1,6 +1,6 @@
 # Analog Wheel Controls for Space Engineers
 
-This is a plugin for Space Engineers that allows analog control of the brakes and throttle of wheeled vehicles. It runs client-side, meaning that it works in singleplayer and multiplayer games even if it's not installed on the server (don't install it on a dedicated server).
+This is a plugin for Space Engineers that allows analog control of the brakes and throttle of wheeled vehicles. It works in singleplayer mode but it must be installed on the server for it to work in multiplayer. In the latter case, it's not necessary to have it on the client. In other words: If you want to use this in MP, you'll have to pester your local server admins (please don't) to make them install it.
 
 The plugin was meant to be a proof of concept for KeenSWH to be able to test and implement a fix quickly and as such it is quite unrefined. One way it shows is that the braking curve (how hard it brakes depending on your input) is hard-coded. I basically brute-forced a bunch of numbers until I found something that works with my device. It can be changed in MyBrakeExtensions.UpdateBrake() to suit your needs.
 

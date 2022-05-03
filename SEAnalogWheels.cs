@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Reflection;
+using System.Collections.Generic;
 using Sandbox;
 using Sandbox.Game.Entities.Cube;
 using Sandbox.Game.GameSystems;
@@ -14,7 +15,7 @@ namespace SEAnalogWheels
         public void Init(object gameinstance = null)
         {
             var harmony = new Harmony("SEAnalogWheels");
-            harmony.PatchAll();
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             MyLogExtensions.Error(MySandboxGame.Log, "SEAnalogWheels initialized successfully");
         }
