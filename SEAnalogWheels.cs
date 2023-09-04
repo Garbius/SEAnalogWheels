@@ -16,8 +16,6 @@ namespace SEAnalogWheels
         {
             var harmony = new Harmony("SEAnalogWheels");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-
-            MyLogExtensions.Error(MySandboxGame.Log, "SEAnalogWheels initialized successfully");
         }
 
         public void Update()
@@ -58,17 +56,6 @@ namespace SEAnalogWheels
             return false;
         }
     }
-
-    // This doesn't work anyway. Short-circuited by GetWheelAndLinearVelocity()
-    [HarmonyPatch(typeof(MyMotorSuspension), "ArtificialBreakingLogic")]
-    public static class ArtificialBreakingLogicPatch
-    {
-        public static bool Prefix()
-        {
-            return false;
-        }
-    }
-
 
     [HarmonyPatch(typeof(MyMotorSuspension), "UpdatePropulsion")]
     public class UpdatePropulsionPatch

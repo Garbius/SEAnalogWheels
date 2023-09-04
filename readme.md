@@ -9,26 +9,9 @@ Hopefully we won't need this much longer but until then, enjoy.
 
 ## Installation
 
-* Download the plugin from the [Releases](https://github.com/Garbius/SEAnalogWheels/releases) section or build it from source
-* Drop the dll files into your `common\SpaceEngineers\Bin64` folder
-  * `SEAnalogWheels.dll`
-  * `0Harmony.dll`
-* Add `-plugin SEAnalogWheels.dll` to your Space Engineers launch options, which can be found by opening Space Engineers properties in your Steam Library and hitting the _"SET LAUNCH OPTIONS..."_ button
-
+Install the custom game launcher from the [Github repository](https://github.com/sepluginloader/SpaceEngineersLauncher). Instructions are at the bottom of the page. It will automatically install [Plugin Loader](https://github.com/sepluginloader/PluginLoader). Start the game using the launcher and open the Plugins window from the main menu. Click the little plus sign in the bottom right corner of the Plugins column and find this plugin in the list and enable it. The game must be restarted before it can be used.
 
 ## Support
 
-I can be found on the Wooting and KeenSWH Discord servers. Please provide the log file located in `%APPDATA%\SpaceEngineers\SpaceEngineers_xxxxxxxx_xxxxxxxxx.log` as it often contains information crucial to solving your problem. If it looks more like a bug, please open an issue on the GitHub page or create a pull request if you can fix it on your own.
+I can be found in the KeenSWH and Plugin Loader Discord servers. Please provide the log file located in `%APPDATA%\SpaceEngineers\SpaceEngineers_xxxxxxxx_xxxxxxxxx.log` as it often contains information crucial to solving your problem. If it looks more like a bug, please open an issue on the GitHub page or create a pull request if you can fix it on your own.
 
-
-## Build it yourself
-
-To build this project, you need to reference the following assemblies from your `common\SpaceEngineers\Bin64` folder:
-* `HavokWrapper`
-* `Sandbox.Game`
-* `VRage`
-* `VRage.Game`
-* `VRage.Library`
-* `VRage.Math`
-
-You will also need [WootingAnalogSDK.NET](https://www.nuget.org/packages/WootingAnalogSDK.NET/) in your project because that's what this is all about, and [Harmony](https://www.nuget.org/packages/lib.harmony) to build the more recent versions. 

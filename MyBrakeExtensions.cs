@@ -13,17 +13,17 @@ namespace SEAnalogWheels
     public static class MyBrakeExtensions
     {
         private static MethodInfo _SafeBody;
+        private static MethodInfo _Constraint;
         private static MethodInfo _PropagateFriction;
 
-        private static FieldInfo _m_constraint;
         private static FieldInfo _m_breakingConstraint;
 
         static MyBrakeExtensions()
         {
             _SafeBody = typeof(MyMotorSuspension).GetMethod("get_SafeBody", BindingFlags.NonPublic | BindingFlags.Instance);
+            _Constraint = typeof(MyMotorSuspension).GetMethod("get_Constraint", BindingFlags.NonPublic | BindingFlags.Instance);
             _PropagateFriction = typeof(MyMotorSuspension).GetMethod("PropagateFriction", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            _m_constraint = typeof(MyMotorSuspension).GetField("m_constraint", BindingFlags.NonPublic | BindingFlags.Instance);
             _m_breakingConstraint = typeof(MyMotorSuspension).GetField("m_breakingConstraint", BindingFlags.NonPublic | BindingFlags.Instance);
         }
 
@@ -54,28 +54,11 @@ namespace SEAnalogWheels
             }
         }
 
-        private static Dictionary<MyMotorSuspension, float> m_brake_override = new Dictionary<MyMotorSuspension, float>();
-        private static float BrakeOverride(this MyMotorSuspension _this)
-        {
-            if (m_brake_override.ContainsKey(_this))
-            {
-                return m_brake_override[_this];
-            }
-            else
-            {
-                return 0f;
-            }
-        }
-
         public static void UpdateBrake(this MyMotorSuspension _this, float brake)
         {
             if (_this.SafeBody() == null)
                 return;
 
-            if (_this.BrakeOverride() > 0f)
-            {
-                brake = _this.BrakeOverride();
-            }
             _this.PropagateFriction();
             if (brake > 0f)
             {
@@ -86,7 +69,7 @@ namespace SEAnalogWheels
             {
                 _this.SafeBody().AngularDamping = _this.CubeGrid.Physics.AngularDamping;
 
-                if (Sync.IsServer && _this.m_constraint() != null && _this.m_breakingConstraint())
+                if (Sync.IsServer && _this.Constraint() != null && _this.m_breakingConstraint())
                 {
                     _this.m_breakingConstraint().Value = false;
                 }
@@ -98,14 +81,14 @@ namespace SEAnalogWheels
             return (HkRigidBody)_SafeBody.Invoke(_this, null);
         }
 
+        private static HkConstraint Constraint(this MyMotorSuspension _this)
+        {
+            return (HkConstraint)_Constraint.Invoke(_this, null);
+        }
+
         private static void PropagateFriction(this MyMotorSuspension _this)
         {
             _PropagateFriction.Invoke(_this, null);
-        }
-
-        private static HkConstraint m_constraint(this MyMotorSuspension _this)
-        {
-            return (HkConstraint)_m_constraint.GetValue(_this);
         }
 
         private static Sync<bool, SyncDirection.FromServer> m_breakingConstraint(this MyMotorSuspension _this)
